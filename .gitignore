@@ -1,0 +1,7 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+airbnb_spring_jdbc/src/main/resources/application.properties
