@@ -59,7 +59,7 @@ public class UserRepository {
     }
 
     public Boolean userExists(int userId){
-        String sql = "SELECT count(*) FROM [airbnb_spring_db].[dbo].[user] WHERE ID = ?";
+        String sql = "SELECT count(*) FROM [airbnb_spring_db].[dbo].[user] WHERE id = ?";
         int count = jdbcTemplate.queryForObject(sql, Integer.class, userId);
 
         if(count == 0){

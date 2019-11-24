@@ -58,8 +58,8 @@ public class PaymentRepository {
         
     }
 
-    public Boolean PaymentExists(int paymentId){
-        String sql = "SELECT count(*) FROM [airbnb_spring_db].[dbo].[payment] WHERE ID = ?";
+    public Boolean paymentExists(int paymentId){
+        String sql = "SELECT count(*) FROM [airbnb_spring_db].[dbo].[payment] WHERE id = ?";
         int count = jdbcTemplate.queryForObject(sql, Integer.class, paymentId);
 
         if(count == 0){
