@@ -58,7 +58,7 @@ public class PropertyRepository {
         
     }
 
-    public Boolean PropertyExists(int propertyId){
+    public Boolean propertyExists(int propertyId){
         String sql = "SELECT count(*) FROM [airbnb_spring_db].[dbo].[property] WHERE id = ?";
         int count = jdbcTemplate.queryForObject(sql, Integer.class, propertyId);
 
