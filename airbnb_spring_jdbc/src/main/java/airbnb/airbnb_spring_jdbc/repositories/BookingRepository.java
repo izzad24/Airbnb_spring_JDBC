@@ -30,11 +30,11 @@ public class BookingRepository {
     }
 
     public void addBooking (Booking booking){
-        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[booking] (price, booking_date, check_in, check_out, user_id, property_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, booking.getPrice(), booking.getBooking_date(), booking.getCheck_in(), booking.getCheck_out(), booking.getUser_id(), booking.getProperty_id(), booking.getCreated_at(), booking.getUpdated_at());
+        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[booking] (price, booking_date, check_in, check_out, user_id, property_id) VALUES (?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, booking.getPrice(), booking.getBooking_date(), booking.getCheck_in(), booking.getCheck_out(), booking.getUser_id(), booking.getProperty_id());
 
-        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[booking] WHERE price = ? AND booking_date = ? AND check_in = ? AND check_out = ? AND user_id = ? AND property_id = ? AND created_at = ? AND updated_at = ?";
-        int bookingId = jdbcTemplate.queryForObject(sql2, Integer.class, booking.getPrice(), booking.getBooking_date(), booking.getCheck_in(), booking.getCheck_out(), booking.getUser_id(), booking.getProperty_id(), booking.getCreated_at(), booking.getUpdated_at());
+        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[booking] WHERE price = ? AND booking_date = ? AND check_in = ? AND check_out = ? AND user_id = ? AND property_id = ?";
+        int bookingId = jdbcTemplate.queryForObject(sql2, Integer.class, booking.getPrice(), booking.getBooking_date(), booking.getCheck_in(), booking.getCheck_out(), booking.getUser_id(), booking.getProperty_id());
 
         booking.setId(bookingId);
     }

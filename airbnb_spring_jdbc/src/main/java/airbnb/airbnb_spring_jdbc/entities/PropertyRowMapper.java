@@ -15,8 +15,8 @@ public class PropertyRowMapper implements RowMapper<Property> {
         x.setId(row.getInt("id"));
         x.setAddress(row.getString("address"));
         x.setOwner_id(row.getInt("owner_id"));
-        x.setCreated_at(row.getDate("created_at"));
-        x.setUpdated_at(row.getDate("updated_at"));
+        x.setCreated_at(row.getTimestamp("created_at"));
+        x.setUpdated_at(row.getTimestamp("updated_at"));
 
         return x;
     }

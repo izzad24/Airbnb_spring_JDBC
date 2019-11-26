@@ -18,8 +18,8 @@ public class UserRowMapper implements RowMapper<User> {
         x.setId(row.getInt("id"));
         x.setName(row.getString("name"));
         x.setContact_no(row.getString("contact_no"));
-        x.setCreated_at(row.getTime("created_at"));
-        x.setUpdated_at(row.getDate("updated_at"));
+        x.setCreated_at(row.getTimestamp("created_at"));
+        x.setUpdated_at(row.getTimestamp("updated_at"));
         return x;
     }
 

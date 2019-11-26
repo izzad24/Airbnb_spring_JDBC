@@ -15,8 +15,8 @@ public class PaymentRowMapper implements RowMapper<Payment>{
         x.setId(row.getInt("id"));
         x.setStatus(row.getBoolean("status"));
         x.setAmount(row.getInt("amount"));
-        x.setCreated_at(row.getDate("created_at"));
-        x.setUpdated_at(row.getDate("updated_at"));
+        x.setCreated_at(row.getTimestamp("created_at"));
+        x.setUpdated_at(row.getTimestamp("updated_at"));
         x.setBooking_id(row.getInt("booking_id"));
         return x;
     }

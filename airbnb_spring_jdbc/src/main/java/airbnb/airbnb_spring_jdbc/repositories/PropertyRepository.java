@@ -31,11 +31,11 @@ public class PropertyRepository {
     }
 
     public void addProperty (Property property){
-        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[property] (address, owner_id, created_at, updated_at) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, property.getAddress(), property.getOwner_id(), property.getCreated_at(), property.getUpdated_at());
+        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[property] (address, owner_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, property.getAddress(), property.getOwner_id());
 
-        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[property] WHERE address = ? AND owner_id = ? AND created_at = ? AND updated_at = ?";
-        int propertyId = jdbcTemplate.queryForObject(sql2, Integer.class, property.getAddress(), property.getOwner_id(), property.getCreated_at(), property.getUpdated_at());
+        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[property] WHERE address = ? AND owner_id = ?";
+        int propertyId = jdbcTemplate.queryForObject(sql2, Integer.class, property.getAddress(), property.getOwner_id());
 
         property.setId(propertyId);
     }

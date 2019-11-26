@@ -31,11 +31,11 @@ public class PaymentRepository {
     }
 
     public void addPayment (Payment payment){
-        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[payment] (status, amount, created_at, updated_at, booking_id) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, payment.getStatus(), payment.getAmount(), payment.getCreated_at(), payment.getUpdated_at(), payment.getBooking_id());
+        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[payment] (status, amount, booking_id) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, payment.getStatus(), payment.getAmount(), payment.getBooking_id());
 
-        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[payment] WHERE status = ? AND amount = ? AND created_at = ? AND updated_at = ? AND booking_id = ?";
-        int paymentId = jdbcTemplate.queryForObject(sql2, Integer.class, payment.getStatus(), payment.getAmount(), payment.getCreated_at(), payment.getUpdated_at(), payment.getBooking_id());
+        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[payment] WHERE status = ? AND amount = ? AND booking_id = ?";
+        int paymentId = jdbcTemplate.queryForObject(sql2, Integer.class, payment.getStatus(), payment.getAmount(), payment.getBooking_id());
 
         payment.setId(paymentId);
     }

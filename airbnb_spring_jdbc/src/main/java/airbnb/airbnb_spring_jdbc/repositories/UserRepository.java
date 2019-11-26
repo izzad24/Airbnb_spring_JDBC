@@ -31,11 +31,11 @@ public class UserRepository {
     }
 
     public void addUser (User user){
-        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[user] (name, contact_no, created_at, updated_at) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, user.getName(), user.getContact_no(), user.getCreated_at(), user.getUpdated_at());
+        String sql = "INSERT INTO [airbnb_spring_db].[dbo].[user] (name, contact_no) VALUES (?, ?)";
+        jdbcTemplate.update(sql, user.getName(), user.getContact_no());
 
-        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[user] WHERE name = ? AND contact_no = ? AND created_at = ? AND updated_at = ?";
-        int userId = jdbcTemplate.queryForObject(sql2, Integer.class, user.getName(), user.getContact_no(), user.getCreated_at(), user.getUpdated_at());
+        String sql2 = "SELECT id FROM [airbnb_spring_db].[dbo].[user] WHERE name = ? AND contact_no = ?";
+        int userId = jdbcTemplate.queryForObject(sql2, Integer.class, user.getName(), user.getContact_no());
 
         user.setId(userId);
     }

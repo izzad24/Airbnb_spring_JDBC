@@ -17,10 +17,10 @@ public class BookingRowMapper implements RowMapper<Booking> {
         x.setId(row.getInt("id"));
         x.setPrice(row.getInt("price"));
         x.setBooking_date(row.getDate("booking_date"));
-        x.setCheck_in(row.getDate("check_in"));
-        x.setCheck_out(row.getDate("check_out"));
-        x.setCreated_at(row.getDate("created_at"));
-        x.setUpdated_at(row.getDate("updated_at"));
+        x.setCheck_in(row.getTimestamp("check_in"));
+        x.setCheck_out(row.getTimestamp("check_out"));
+        x.setCreated_at(row.getTimestamp("created_at"));
+        x.setUpdated_at(row.getTimestamp("updated_at"));
         x.setUser_id(row.getInt("user_id"));
         x.setProperty_id(row.getInt("property_id"));
         return x;
