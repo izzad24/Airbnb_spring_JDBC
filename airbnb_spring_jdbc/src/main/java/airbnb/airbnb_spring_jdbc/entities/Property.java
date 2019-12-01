@@ -1,24 +1,62 @@
 package airbnb.airbnb_spring_jdbc.entities;
 
+
 import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * Property
  */
+@Entity
+@Table(name = "property")
 public class Property {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JsonIgnoreProperties("property")
+    @OneToMany(mappedBy = "property")
+    private Set<Booking> bookings;
+
+    @Column(name = "address")
     private String address;
-    private int owner_id;
+
+    @JsonIgnore
+    @Column(name = "owner_id", insertable = false, updatable = false)
+    private Long owner_id;
+
+    @JsonIgnoreProperties("property")
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
+
+    @Column(name = "created_at")
     private Date created_at;
+
+    @Column(name = "updated_at")
     private Date updated_at;
 
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -30,11 +68,11 @@ public class Property {
         this.address = address;
     }
 
-    public int getOwner_id() {
+    public Long getOwner_id() {
         return this.owner_id;
     }
 
-    public void setOwner_id(int owner_id) {
+    public void setOwner_id(Long owner_id) {
         this.owner_id = owner_id;
     }
 

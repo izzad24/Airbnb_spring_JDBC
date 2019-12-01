@@ -24,36 +24,36 @@ public class BookingController {
     @Autowired
     BookingRepository repo;
 
-    @GetMapping(value = "/bookings")
-    public List<Booking> index(){
-        return repo.getAll();
-    }
+    // @GetMapping(value = "/bookings")
+    // public List<Booking> index(){
+    //     return repo.getAll();
+    // }
 
-    @PostMapping(value = "/bookings")
-    public Booking create(@RequestBody Booking booking) {
-        repo.addBooking(booking);
-        return booking;
-    }
+    // @PostMapping(value = "/bookings")
+    // public Booking create(@RequestBody Booking booking) {
+    //     repo.addBooking(booking);
+    //     return booking;
+    // }
 
-    @GetMapping(value = "/bookings/{id}")
-    public Booking show(@PathVariable("id") int id){
-        Booking booking = repo.getOne(id);
-        return booking;
-    }
+    // @GetMapping(value = "/bookings/{id}")
+    // public Booking show(@PathVariable("id") int id){
+    //     Booking booking = repo.getOne(id);
+    //     return booking;
+    // }
 
-    @PostMapping(value = "/bookings/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody Booking booking){
-        repo.updateBooking(id, booking);
-    }
+    // @PostMapping(value = "/bookings/{id}")
+    // public void update(@PathVariable("id") int id, @RequestBody Booking booking){
+    //     repo.updateBooking(id, booking);
+    // }
     
-    @DeleteMapping(value = "/bookings/{id}")
-    public String delete(@PathVariable("id") int id){
-        if(repo.bookingExists(id)){
-            repo.deleteBooking(id);
-            return "Booking deleted";
-        }
-        else{
-            return "Booking not found";
-        }
-    }
+    // @DeleteMapping(value = "/bookings/{id}")
+    // public String delete(@PathVariable("id") int id){
+    //     if(repo.bookingExists(id)){
+    //         repo.deleteBooking(id);
+    //         return "Booking deleted";
+    //     }
+    //     else{
+    //         return "Booking not found";
+    //     }
+    // }
 }

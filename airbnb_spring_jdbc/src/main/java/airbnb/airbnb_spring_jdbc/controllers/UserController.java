@@ -22,36 +22,36 @@ public class UserController {
     @Autowired
     UserRepository userRepo;
 
-    @GetMapping(value = "/users")
-    public List<User> index(){
-        return userRepo.getAll();
-    }
+    // @GetMapping(value = "/users")
+    // public List<User> index(){
+    //     return userRepo.getAll();
+    // }
 
-    @PostMapping(value = "/users")
-    public User create(@RequestBody User user) {
-        userRepo.addUser(user);
-        return user;
-    }
+    // @PostMapping(value = "/users")
+    // public User create(@RequestBody User user) {
+    //     userRepo.addUser(user);
+    //     return user;
+    // }
 
-    @GetMapping(value = "/users/{id}")
-    public User show(@PathVariable("id") int id){
-        User user = userRepo.getOne(id);
-        return user;
-    }
+    // @GetMapping(value = "/users/{id}")
+    // public User show(@PathVariable("id") int id){
+    //     User user = userRepo.getOne(id);
+    //     return user;
+    // }
 
-    @PostMapping(value = "/users/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody User user){
-        userRepo.updateUser(id, user);
-    }
+    // @PostMapping(value = "/users/{id}")
+    // public void update(@PathVariable("id") int id, @RequestBody User user){
+    //     userRepo.updateUser(id, user);
+    // }
     
-    @DeleteMapping(value = "/users/{id}")
-    public String delete(@PathVariable("id") int id){
-        if(userRepo.userExists(id)){
-            userRepo.deleteUser(id);
-            return "User deleted";
-        }
-        else{
-            return "User not found";
-        }
-    }
+    // @DeleteMapping(value = "/users/{id}")
+    // public String delete(@PathVariable("id") int id){
+    //     if(userRepo.userExists(id)){
+    //         userRepo.deleteUser(id);
+    //         return "User deleted";
+    //     }
+    //     else{
+    //         return "User not found";
+    //     }
+    // }
 }

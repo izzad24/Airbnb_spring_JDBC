@@ -2,24 +2,55 @@ package airbnb.airbnb_spring_jdbc.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Payment
  */
+@Entity
+@Table(name = "payment")
 public class Payment {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "status")
     private Boolean status;
+
+    @Column(name = "amount")
     private int amount;
+
+    @Column(name = "created_at")
     private Date created_at;
+
+    @Column(name = "upated_at")
     private Date updated_at;
-    private int booking_id;
 
+    @JsonIgnore
+    @Column(name = "booking_id", insertable = false, updatable = false)
+    private Long booking_id;
 
-    public int getId() {
+    @JsonIgnoreProperties("payment")
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,11 +90,11 @@ public class Payment {
         this.updated_at = updated_at;
     }
 
-    public int getBooking_id() {
+    public Long getBooking_id() {
         return this.booking_id;
     }
 
-    public void setBooking_id(int booking_id) {
+    public void setBooking_id(Long booking_id) {
         this.booking_id = booking_id;
     }
 

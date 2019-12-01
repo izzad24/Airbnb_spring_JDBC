@@ -26,36 +26,36 @@ public class PaymentController {
     @Autowired
     PaymentRepository repo;
 
-    @GetMapping(value = "/payments")
-    public List<Payment> index(){
-        return repo.getAll();
-    }
+    // @GetMapping(value = "/payments")
+    // public List<Payment> index(){
+    //     return repo.getAll();
+    // }
 
-    @PostMapping(value = "/payments")
-    public Payment create(@RequestBody Payment payment) {
-        repo.addPayment(payment);
-        return payment;
-    }
+    // @PostMapping(value = "/payments")
+    // public Payment create(@RequestBody Payment payment) {
+    //     repo.addPayment(payment);
+    //     return payment;
+    // }
 
-    @GetMapping(value = "/payments/{id}")
-    public Payment show(@PathVariable("id") int id){
-        Payment payment = repo.getOne(id);
-        return payment;
-    }
+    // @GetMapping(value = "/payments/{id}")
+    // public Payment show(@PathVariable("id") int id){
+    //     Payment payment = repo.getOne(id);
+    //     return payment;
+    // }
 
-    @PostMapping(value = "/payments/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody Payment payment){
-        repo.updatePayment(id, payment);
-    }
+    // @PostMapping(value = "/payments/{id}")
+    // public void update(@PathVariable("id") int id, @RequestBody Payment payment){
+    //     repo.updatePayment(id, payment);
+    // }
     
-    @DeleteMapping(value = "/payments/{id}")
-    public String delete(@PathVariable("id") int id){
-        if(repo.paymentExists(id)){
-            repo.deletePayment(id);
-            return "Payment deleted";
-        }
-        else{
-            return "Payment not found";
-        }
-    }
+    // @DeleteMapping(value = "/payments/{id}")
+    // public String delete(@PathVariable("id") int id){
+    //     if(repo.paymentExists(id)){
+    //         repo.deletePayment(id);
+    //         return "Payment deleted";
+    //     }
+    //     else{
+    //         return "Payment not found";
+    //     }
+    // }
 }

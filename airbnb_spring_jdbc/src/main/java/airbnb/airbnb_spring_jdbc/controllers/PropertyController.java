@@ -27,36 +27,36 @@ public class PropertyController {
     @Autowired
     PropertyRepository repo;
 
-    @GetMapping(value = "/properties")
-    public List<Property> index(){
-        return repo.getAll();
-    }
+    // @GetMapping(value = "/properties")
+    // public List<Property> index(){
+    //     return repo.getAll();
+    // }
 
-    @PostMapping(value = "/properties")
-    public Property create(@RequestBody Property property) {
-        repo.addProperty(property);
-        return property;
-    }
+    // @PostMapping(value = "/properties")
+    // public Property create(@RequestBody Property property) {
+    //     repo.addProperty(property);
+    //     return property;
+    // }
 
-    @GetMapping(value = "/properties/{id}")
-    public Property show(@PathVariable("id") int id){
-        Property property = repo.getOne(id);
-        return property;
-    }
+    // @GetMapping(value = "/properties/{id}")
+    // public Property show(@PathVariable("id") int id){
+    //     Property property = repo.getOne(id);
+    //     return property;
+    // }
 
-    @PostMapping(value = "/properties/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody Property property){
-        repo.updateProperty(id, property);
-    }
+    // @PostMapping(value = "/properties/{id}")
+    // public void update(@PathVariable("id") int id, @RequestBody Property property){
+    //     repo.updateProperty(id, property);
+    // }
     
-    @DeleteMapping(value = "/properties/{id}")
-    public String delete(@PathVariable("id") int id){
-        if(repo.propertyExists(id)){
-            repo.deleteProperty(id);
-            return "Property deleted";
-        }
-        else{
-            return "Property not found";
-        }
-    }
+    // @DeleteMapping(value = "/properties/{id}")
+    // public String delete(@PathVariable("id") int id){
+    //     if(repo.propertyExists(id)){
+    //         repo.deleteProperty(id);
+    //         return "Property deleted";
+    //     }
+    //     else{
+    //         return "Property not found";
+    //     }
+    // }
 }
