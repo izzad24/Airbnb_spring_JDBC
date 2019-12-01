@@ -1,7 +1,7 @@
 package airbnb.airbnb_spring_jdbc.repositories;
 
-import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.jdbc.core.JdbcTemplate;
 // import org.springframework.jdbc.core.RowMapper;
@@ -15,7 +15,7 @@ import airbnb.airbnb_spring_jdbc.entities.User;
  */
 @Transactional
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Long>{
     // private final JdbcTemplate jdbcTemplate;
     // @Autowired
     // public UserRepository(JdbcTemplate jdbcTemplate){

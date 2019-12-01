@@ -1,8 +1,11 @@
 package airbnb.airbnb_spring_jdbc.repositories;
 
+
+import java.util.Date;
 import java.util.List;
 
 // import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.jdbc.core.JdbcTemplate;
 // import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -14,7 +17,16 @@ import airbnb.airbnb_spring_jdbc.entities.Booking;
 
 @Transactional
 @Repository
-public class BookingRepository {
+public interface BookingRepository  extends JpaRepository<Booking, Long>{
+
+    List<Booking> findByUserId(Long user_id);
+    List<Booking> findByPropertyId(Long property_id);
+    List<Booking> findByBookingDate(Date booking_date);
+    List<Booking> findByPrice(Integer price);
+    List<Booking> findByUserIdAndPropertyId(Long user_id, Long property_id);
+    List<Booking> findByUserIdAndBookingDate(Long user_id, Date booking_date);
+    List<Booking> findByPropertyIdAndBookingDate(Long property_id, Date booking_date);
+
     // private final JdbcTemplate jdbcTemplate;
     // @Autowired
     // public BookingRepository(JdbcTemplate jdbcTemplate){

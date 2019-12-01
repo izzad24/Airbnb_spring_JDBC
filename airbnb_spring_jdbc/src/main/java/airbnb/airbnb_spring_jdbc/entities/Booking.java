@@ -36,7 +36,7 @@ public class Booking {
     private int price;
 
     @Column(name = "booking_date")
-    private Date booking_date;
+    private Date bookingDate;
 
     @Column(name = "check_in")
     private Date check_in;
@@ -46,11 +46,11 @@ public class Booking {
 
     @JsonIgnore
     @Column(name = "user_id", insertable = false, updatable = false)
-    private Long user_id;
+    private Long userId;
 
     @JsonIgnore
     @Column(name = "property_id", insertable = false, updatable = false)
-    private Long property_id;
+    private Long propertyId;
 
     @JsonIgnoreProperties("booking")
     @ManyToOne
@@ -85,13 +85,15 @@ public class Booking {
         this.price = price;
     }
 
-    public Date getBooking_date() {
-        return this.booking_date;
+
+    public Date getBookingDate() {
+        return this.bookingDate;
     }
 
-    public void setBooking_date(Date booking_date) {
-        this.booking_date = booking_date;
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
     }
+
 
     public Date getCheck_in() {
         return this.check_in;
@@ -109,21 +111,23 @@ public class Booking {
         this.check_out = check_out;
     }
 
-    public Long getUser_id() {
-        return this.user_id;
+
+    public Long getUserId() {
+        return this.userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getProperty_id() {
-        return this.property_id;
+    public Long getPropertyId() {
+        return this.propertyId;
     }
 
-    public void setProperty_id(Long property_id) {
-        this.property_id = property_id;
+    public void setPropertyId(Long propertyId) {
+        this.propertyId = propertyId;
     }
+    
 
     public Date getCreated_at() {
         return this.created_at;
